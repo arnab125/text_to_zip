@@ -33,6 +33,8 @@ while True:
                 #os.remove(source_object)
 
         object_paths = source_objects[0]
+        print("This is the", object_paths.split('\\')[-1], "file found in source folder")
+        print("")
         #print(object_paths)
         with open(object_paths, 'r') as f:
             content = f.readlines()
@@ -60,6 +62,7 @@ while True:
                     file.write(content[i])
             with ZipFile(zip_file, 'a') as zip:
                 zip.write(filename)
+                print(f"{filename} added to {zip_file}")
                 os.remove(filename)
             index += 10
 
@@ -68,6 +71,9 @@ while True:
         with ZipFile(f"{destination_path}/{zip_file}", 'r') as zipOBJ:
             #print(zipOBJ.namelist())
             zipOBJ.extractall(destination_path)
+            print("")
+            print(f"{zip_file} extracted to {destination_path} successfully")
+            print("")
 
 
 
